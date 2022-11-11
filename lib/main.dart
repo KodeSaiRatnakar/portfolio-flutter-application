@@ -52,10 +52,10 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     Size mediaSize = MediaQuery.of(context).size;
     Color themeColor = const Color(0xff1D4ED8);
-    double skill_opacity = 0.4;
+
     return Scaffold(
       drawer: Drawer(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 bottomRight: Radius.circular(20),
                 topRight: Radius.circular(20))),
@@ -145,12 +145,20 @@ class _HomeState extends State<Home> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text("Hi !\nI am Sai Ratnakar",
-                            textAlign: TextAlign.center,
-                            style: GoogleFonts.lato(
-                                color: themeColor,
-                                fontSize: mediaSize.width > 700 ? 50 : 30,
-                                fontWeight: FontWeight.bold)),
+                        child: TweenAnimationBuilder(
+                          tween: Tween<double>(begin:mediaSize.width > 700 ? 20 : 15,end: mediaSize.width > 700 ? 50 : 30 ),
+                          duration: Duration(milliseconds: 1500),
+
+curve: Curves.bounceOut,
+                          builder: (context,value,child){
+                            return Text("Hi !\nI am Sai Ratnakar",
+                                textAlign: TextAlign.center,
+                                style: GoogleFonts.lato(
+                                    color: themeColor,
+                                    fontSize: value,
+                                    fontWeight: FontWeight.bold));
+                          },
+                        ),
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -351,7 +359,7 @@ class Custom_painter extends CustomPainter {
 
   void paint(Canvas canvas, Size size) {
     var paint = Paint()..color = color;
-    Path path = Path();
+
 
     canvas.drawCircle(
         Offset(size.width > 450 ? size.width * x : 15,
