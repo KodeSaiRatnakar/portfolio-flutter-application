@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
       body: Builder(builder: (BuildContext context) {
         return CustomPaint(
           foregroundPainter: Custom_painter(
-              x: 0.002, y: 0.9, r: 0.3, color: Color(0xff1D4ED8)),
+              x: 0.002, y: 0.9, r: 0.3, color: const Color(0xff1D4ED8)),
           child: Column(
             children: [
               SizedBox(
@@ -146,17 +146,22 @@ class _HomeState extends State<Home> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TweenAnimationBuilder(
-                          tween: Tween<double>(begin:mediaSize.width > 700 ? 20 : 15,end: mediaSize.width > 700 ? 50 : 30 ),
+                          tween: Tween<double>(
+                            begin: mediaSize.width > 700 ? 20 : 15,
+                            end: mediaSize.width > 700 ? 50 : 30,
+                          ),
                           duration: Duration(milliseconds: 1500),
-
-curve: Curves.bounceOut,
-                          builder: (context,value,child){
-                            return Text("Hi !\nI am Sai Ratnakar",
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.lato(
-                                    color: themeColor,
-                                    fontSize: value,
-                                    fontWeight: FontWeight.bold));
+                          curve: Curves.bounceOut,
+                          builder: (context, value, child) {
+                            return Text(
+                              "Hi !\nI am Sai Ratnakar",
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.lato(
+                                color: themeColor,
+                                fontSize: value,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            );
                           },
                         ),
                       ),
@@ -203,7 +208,7 @@ curve: Curves.bounceOut,
                               ),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 20,
                           ),
                           InkWell(
@@ -359,7 +364,6 @@ class Custom_painter extends CustomPainter {
 
   void paint(Canvas canvas, Size size) {
     var paint = Paint()..color = color;
-
 
     canvas.drawCircle(
         Offset(size.width > 450 ? size.width * x : 15,
