@@ -1,6 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Color themeColor = const Color(0xff1D4ED8);
@@ -187,10 +189,28 @@ class _HomeState extends State<Home> {
                                       child: Container(
                                         height: 50,
                                         width: 50,
-                                        decoration: const BoxDecoration(
+                                        /*      decoration: const BoxDecoration(
                                             image: DecorationImage(
                                                 image: NetworkImage(
                                                     "https://firebasestorage.googleapis.com/v0/b/sairatnakarportfolio.appspot.com/o/skills.png?alt=media&token=83c72276-65c9-455f-9fbd-42f3288ed9fb"))),
+                                    */
+                                        child: CachedNetworkImage(
+                                          imageUrl:
+                                              "https://firebasestorage.googleapis.com/v0/b/sairatnakarportfolio.appspot.com/o/skills.png?alt=media&token=83c72276-65c9-455f-9fbd-42f3288ed9fb",
+                                          progressIndicatorBuilder:
+                                              (context, url, progress) {
+                                            return Center(
+                                              child: Shimmer.fromColors(
+                                                  child: SizedBox(
+                                                    height: 50,
+                                                    width: 50,
+                                                  ),
+                                                  baseColor: themeColor,
+                                                  highlightColor: themeColor
+                                                      .withOpacity(0.5)),
+                                            );
+                                          },
+                                        ),
                                       ),
                                     ),
                                     Padding(
@@ -226,13 +246,32 @@ class _HomeState extends State<Home> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Container(
+                                    child: SizedBox(
                                       height: 50,
                                       width: 50,
-                                      decoration: const BoxDecoration(
+                                      child: CachedNetworkImage(
+                                        imageUrl:
+                                            "https://firebasestorage.googleapis.com/v0/b/sairatnakarportfolio.appspot.com/o/projext.png?alt=media&token=fb548fa8-9c3d-45d9-88ae-56ede7c7c306",
+                                        progressIndicatorBuilder:
+                                            (context, url, progress) {
+                                          return Center(
+                                            child: Shimmer.fromColors(
+                                              baseColor: themeColor,
+                                              highlightColor:
+                                                  themeColor.withOpacity(0.5),
+                                              child: const SizedBox(
+                                                height: 50,
+                                                width: 50,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ),
+/*                                      decoration: const BoxDecoration(
                                           image: DecorationImage(
                                               image: NetworkImage(
                                                   "https://firebasestorage.googleapis.com/v0/b/sairatnakarportfolio.appspot.com/o/projext.png?alt=media&token=fb548fa8-9c3d-45d9-88ae-56ede7c7c306"))),
+                                      */
                                     ),
                                   ),
                                   Padding(
@@ -407,11 +446,23 @@ Widget customText(String text) {
       children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Container(
-            width: 50,
+          child: SizedBox(
             height: 50,
-            decoration: BoxDecoration(
-                image: DecorationImage(image: NetworkImage("${dic[text]}"))),
+            width: 50,
+            child: CachedNetworkImage(
+              imageUrl: dic[text].toString(),
+              progressIndicatorBuilder: (context, url, progress) {
+                return Center(
+                  child: Shimmer.fromColors(
+                      baseColor: themeColor,
+                      highlightColor: themeColor.withOpacity(0.5),
+                      child: const SizedBox(
+                        height: 50,
+                        width: 50,
+                      )),
+                );
+              },
+            ),
           ),
         ),
         Padding(
@@ -494,7 +545,7 @@ Widget educationTab(Size mediaSize) {
   TextStyle ts =
       TextStyle(color: themeColor, fontWeight: FontWeight.bold, fontSize: 15);
   return Center(
-    child: Container(
+    child: SizedBox(
         height: mediaSize.height * 0.8,
         width: mediaSize.width * 0.6,
         child: ListView(
@@ -540,7 +591,7 @@ Widget educationTab(Size mediaSize) {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
@@ -552,7 +603,7 @@ Widget educationTab(Size mediaSize) {
               child: Column(
                 children: [
                   educationDetailsText("Diploma", mediaSize),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Wrap(
