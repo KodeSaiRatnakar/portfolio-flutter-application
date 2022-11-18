@@ -125,14 +125,29 @@ class _HomeState extends State<Home> {
                             size: 32,
                           )),
                     ),
-                  const Padding(
-                    padding: EdgeInsets.all(19.0),
-                    child: Text(
-                      "Sai Ratnakar",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
-                          color: Color(0xff1D4ED8)),
+                  Padding(
+                    padding: const EdgeInsets.all(19.0),
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(5),
+                      overlayColor: MaterialStateProperty.all(
+                        themeColor.withOpacity(0.2),
+                      ),
+                      onTap: () {
+                        launchUrl(
+                            Uri.parse(
+                                "https://github.com/KodeSaiRatnakar?tab=repositories"),
+                            mode: LaunchMode.platformDefault);
+                      },
+                      child: const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          "Git Hub",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 30,
+                              color: Color(0xff1D4ED8)),
+                        ),
+                      ),
                     ),
                   ),
                 ],
