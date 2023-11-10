@@ -1,6 +1,6 @@
 # Portfolio Web Site
 
-[Open Portfolio web site](https://docs.flutter.dev/get-started/codelab)
+[Open Portfolio web site]()
 
 ![screen shot](assets/screenshot.png)
 
