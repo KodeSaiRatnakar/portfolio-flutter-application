@@ -1,16 +1,16 @@
-# untitled
+# Portfolio Web Site
 
-A new Flutter project.
+[Open Portfolio web site](https://docs.flutter.dev/get-started/codelab)
 
-## Getting Started
+![screen shot](assets/screenshot.png)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+This project was created with Flutter and showcases my skills and experience in flutter development.I have gained hands-on experience in the following areas:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **User Interface (UI) Design**: Created visually appealing and responsive user interfaces using Flutter's widget system.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **State Management**: Riverpod, Getx.
+
+- **Integration with APIs**: Connected the app to external APIs to fetch and display dynamic data, demonstrating proficiency in working with asynchronous operations.
+
+
